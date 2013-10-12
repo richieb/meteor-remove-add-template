@@ -1,0 +1,2 @@
+meteor-remove-add-template
+==========================
