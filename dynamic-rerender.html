@@ -11,19 +11,30 @@
     <div class="controls">
         <input class="remove" type="button" value="Remove Content"/>
         <input class="add" type="button" value="Add Back Content"/>
+        <br>
+        ____________________________________
+
+        <p>
+            <input class="mango" type="button" value="Show Mango"/>
+            <input class="apple" type="button" value="Show Apple"/>
+        </p>
     </div>
 
 
-    <div class="dynamicContent">
+    <div class="main">
         <h1>Dynamic Content Below</h1>
-        {{yield "child"}}
+        <div class="dynamicContent">
+            Everything here will be replaced and re-added.<br>
+
+            {{yield "child"}}
+        </div>
+
         <br>
     </div>
 </template>
 
 
 <template name="childTpl">
-    <h2>Child</h2>
     {{> fruitsTpl}}
 </template>
 
@@ -32,10 +43,7 @@
     {{#each fruits}}
     {{name}}
     {{/each}}
-    <p>
-        <input class="mango" type="button" value="Show Mango"/>
-        <input class="apple" type="button" value="Show Apple"/>
-    </p>
+
 </template>
 
 <template name="layout">

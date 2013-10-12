@@ -31,27 +31,30 @@ if (Meteor.isClient) {
         }
     });
 
+
     Template.fruitsTpl.fruits = function () {
+
         var fruitName = Session.get ("fruitName");
+        console.log ("fruitName This: " + fruitName + " : " );
         return Fruits.find ({name:fruitName});
     };
 
-    Template.fruitsTpl.events ({
-        'click .mango':function () {
-            Session.set ("fruitName", "Mango");
-        },
-        'click .apple':function () {
-            Session.set ("fruitName", "Apple");
-        }
-    });
 
     Template.mainTpl.events ({
+
         'click .remove':function () {
             $(".dynamicContent").html("Content Replaced");
         },
         'click .add':function () {
             Session.set ("fruitName", null);
-            $(".dynamicContent").html(Meteor.render(Template.childTpl()));
+            $(".dynamicContent").html(Meteor.render(Template.fruitsTpl()));
+        },
+        'click .mango':function () {
+            Session.set ("fruitName", "Mango");
+            console.log ("fruitName This: " + Session.get ("fruitName") + " : " );
+        },
+        'click .apple':function () {
+            Session.set ("fruitName", "Apple");
         }
     });
 
